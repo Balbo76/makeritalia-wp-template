@@ -1,19 +1,23 @@
-<?php get_header(); ?>
+<div class="container">
 
-	<main role="main" aria-label="Content">
-		<!-- section -->
-		<section>
+    <?php get_header(); ?>
 
-			<h1><?php esc_html_e( 'Latest Posts', 'html5blank' ); ?></h1>
+        <main role="main" aria-label="Content">
+            <!-- section -->
+            <section>
 
-			<?php get_template_part( 'loop' ); ?>
+                <h1><?php esc_html_e( 'Latest Posts', 'html5blank' ); ?></h1>
 
-			<?php get_template_part( 'pagination' ); ?>
+                <?php get_template_part( 'loop' ); ?>
 
-		</section>
-		<!-- /section -->
-	</main>
+                <?php get_template_part( 'pagination' ); ?>
 
-<?php get_sidebar(); ?>
+            </section>
+            <!-- /section -->
+        </main>
 
-<?php get_footer(); ?>
+    <?php get_sidebar(); ?>
+
+    <?php get_footer(); ?>
+
+</div>

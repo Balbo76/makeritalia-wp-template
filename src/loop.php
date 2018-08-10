@@ -1,5 +1,7 @@
+<div class="card-columns">
 <?php if (have_posts()): while (have_posts()) : the_post(); ?>
 
+    <div class="card">
 	<!-- article -->
 	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
@@ -33,6 +35,7 @@
 
 	</article>
 	<!-- /article -->
+    </div>
 
 <?php endwhile; ?>
 
@@ -45,3 +48,4 @@
 	<!-- /article -->
 
 <?php endif; ?>
+</div>
