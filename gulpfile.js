@@ -147,6 +147,20 @@ gulp.task("jquery", function() {
 		.pipe( gulp.dest( "src/js/lib" ) );
 });
 
+gulp.task("bootstrap-js", function() {
+	return gulp.src("node_modules/bootstrap/dist/js/bootstrap.js")
+		.pipe( $.sourcemaps.init() )
+		.pipe( $.sourcemaps.write( "." ) )
+		.pipe( gulp.dest( "src/js/lib" ) );
+});
+
+gulp.task("bootstrap-css", function() {
+	return gulp.src("node_modules/bootstrap/dist/css/bootstrap.css")
+		.pipe( $.sourcemaps.init() )
+		.pipe( $.sourcemaps.write( "." ) )
+		.pipe( gulp.dest( "src/css/lib" ) );
+});
+
 gulp.task("normalize", function() {
 	return gulp.src("node_modules/normalize.css/normalize.css")
 		.pipe( gulp.dest( "src/css/lib" ) );
@@ -158,7 +172,7 @@ gulp.task( "envProduction", function() {
 });
 
 /** Livereload */
-gulp.task( "watch", [ "template", "styles", "jshint", "modernizr", "jquery", "normalize" ], function() {
+gulp.task( "watch", [ "template", "styles", /* "jshint", */ "modernizr", "jquery", "bootstrap-js", "bootstrap-css", "normalize" ], function() {
 	var server = $.livereload;
 	server.listen();
 
@@ -198,3 +212,7 @@ gulp.task( "build", [
 
 /** Gulp default task */
 gulp.task( "default", ["watch"] );
+
+
+
+
