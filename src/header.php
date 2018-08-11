@@ -24,28 +24,43 @@
 		</script>
 
 	</head>
-	<body <?php body_class(); ?>>
+	<body <?php body_class("container"); ?>>
 
-		<!-- wrapper -->
-		<div class="wrapper">
+        <header class="navbar navbar-expand-lg navbar-light bg-light" role="banner">
+            <a class="navbar-brand" href="<?php echo esc_url( home_url() ); ?>">makerItalia.org</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-			<!-- header -->
-			<header class="header clear" role="banner">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-					<!-- logo -->
-					<div class="logo">
-						<a href="<?php echo esc_url( home_url() ); ?>">
-							<!-- svg logo - toddmotto.com/mastering-svg-use-for-a-retina-web-fallbacks-with-png-script -->
-							<img src="<?php echo esc_url( get_template_directory_uri() ); ?>/img/logo.svg" alt="Logo" class="logo-img">
-						</a>
-					</div>
-					<!-- /logo -->
+                <?php
+                wp_nav_menu(
+                    array(
+                        'theme_location'  => 'header-menu',
+                        'menu'            => '',
+                        'container'       => 'ul',
+                        'container_class' => 'menu-{menu slug}-container',
+                        'container_id'    => '',
+                        'menu_class'      => 'nav-item menu',
+                        'menu_id'         => '',
+                        'echo'            => true,
+                        'fallback_cb'     => 'wp_page_menu',
+                        'before'          => '',
+                        'after'           => '',
+                        'link_before'     => '',
+                        'link_after'      => '',
+                        'items_wrap'      => '%3$s',
+                        'depth'           => 0,
+                        'walker'          => '',
+                    )
+                );
 
-					<!-- nav -->
-					<nav class="nav" role="navigation">
-						<?php html5blank_nav(); ?>
-					</nav>
-					<!-- /nav -->
+                ?>
 
-			</header>
-			<!-- /header -->
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </div>
+        </header>
