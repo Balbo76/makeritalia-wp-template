@@ -1,7 +1,6 @@
 .DS_Store
 node_modules
 src/bower_components
+!src/bower_components/bootstrap/scss/*
 src/css/maps
 .idea
-vendor/bootstrap/node_modules
-vendor/bootstrap/dist
