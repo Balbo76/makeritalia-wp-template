@@ -1,12 +1,12 @@
-<div class="container">
+
 
     <?php get_header(); ?>
-
+    <div class="container">
         <main role="main" aria-label="Content">
             <!-- section -->
             <section>
 
-                <h1><?php esc_html_e( 'Latest Posts', 'html5blank' ); ?></h1>
+                <!--<h1><?php esc_html_e( 'Latest Posts', 'html5blank' ); ?></h1>-->
 
                 <?php get_template_part( 'loop' ); ?>
 

@@ -24,43 +24,75 @@
 		</script>
 
 	</head>
-	<body <?php body_class("container"); ?>>
+	<body <?php body_class("bg-light"); ?>>
 
-        <header class="navbar navbar-expand-lg navbar-light bg-light" role="banner">
-            <a class="navbar-brand" href="<?php echo esc_url( home_url() ); ?>">makerItalia.org</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+        <a class="navbar-brand mr-auto mr-lg-0" href="<?php echo esc_url( home_url() ); ?>">makerItalia.org</a>
+        <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
 
-                <?php
-                wp_nav_menu(
-                    array(
-                        'theme_location'  => 'header-menu',
-                        'menu'            => '',
-                        'container'       => 'ul',
-                        'container_class' => 'menu-{menu slug}-container',
-                        'container_id'    => '',
-                        'menu_class'      => 'nav-item menu',
-                        'menu_id'         => '',
-                        'echo'            => true,
-                        'fallback_cb'     => 'wp_page_menu',
-                        'before'          => '',
-                        'after'           => '',
-                        'link_before'     => '',
-                        'link_after'      => '',
-                        'items_wrap'      => '%3$s',
-                        'depth'           => 0,
-                        'walker'          => '',
-                    )
-                );
+<?php
+$theme_location = "header-menu";
+//$menu_items = wp_get_nav_menu_items("header-menu");
+if ( ($theme_location) && ($locations = get_nav_menu_locations()) && isset($locations[$theme_location]) ) {
+    $menu = get_term($locations[$theme_location], 'nav_menu');
+    $menu_items = wp_get_nav_menu_items($menu->term_id);
 
-                ?>
+    $menu_list = "";
+    $menu_list .= '<ul class="navbar-nav mr-auto">' . "\n";
 
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>
-            </div>
-        </header>
+
+    foreach ($menu_items as $menu_item) {
+        if ($menu_item->menu_item_parent == 0) {
+
+            $parent = $menu_item->ID;
+
+            $menu_array = array();
+            foreach ($menu_items as $submenu) {
+                if ($submenu->menu_item_parent == $parent) {
+                    $bool = true;
+                    $menu_array[] = '<li class="nav-item"><a class="nav-link" href="' . $submenu->url . '">' . $submenu->title . '</a></li>' . "\n";
+                }
+            }
+            if ($bool == true && count($menu_array) > 0) {
+
+                $menu_list .= '<li class="nav-item dropdown">' . "\n";
+                $menu_list .= '<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">' . $menu_item->title . ' <span class="caret"></span></a>' . "\n";
+
+                $menu_list .= '<div class="dropdown-menu">' . "\n";
+                $menu_list .= implode("\n", $menu_array);
+                $menu_list .= '</div>' . "\n";
+
+            } else {
+
+                $menu_list .= '<li>' . "\n";
+                $menu_list .= '<a href="' . $menu_item->url . '">' . $menu_item->title . '</a>' . "\n";
+            }
+
+        }
+
+        // end <li>
+        $menu_list .= '</li>' . "\n";
+    }
+
+    $menu_list .= '</ul>' . "\n";
+    echo $menu_list;
+}
+?>
+
+
+
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+
+
+        </div>
+    </nav>
+
+
+

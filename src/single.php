@@ -3,7 +3,7 @@
     <?php get_header(); ?>
 
         <div class="row">
-            <div class="col-9">
+            <div class="col-md-9">
 
                 <main role="main" aria-label="Content">
                     <!-- section -->
@@ -72,7 +72,7 @@
                 </main>
 
             </div>
-            <div class="col-3">
+            <div class="col-md-3">
 
                 <?php get_sidebar(); ?>
 
