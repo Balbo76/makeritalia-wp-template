@@ -204,19 +204,16 @@ gulp.task( "default", ["watch"] );
 
 
 gulp.task("bootstrap-js", function() {
-	return gulp.src("src/vendor/bootstrap/dist/js/bootstrap.js")
+	return gulp.src("src/bower_components/bootstrap/dist/js/bootstrap.js")
 		.pipe( $.sourcemaps.init() )
 		.pipe( $.sourcemaps.write( "." ) )
 		.pipe( gulp.dest( "src/js/lib" ) );
 });
 
 gulp.task("bootstrap-css", function() {
-	return gulp.src("src/vendor/bootstrap/dist/css/bootstrap.css")
+	return gulp.src("src/bower_components/bootstrap/dist/css/bootstrap.css")
 		.pipe( $.sourcemaps.init() )
 		.pipe( $.sourcemaps.write( "." ) )
 		.pipe( gulp.dest( "src/css/lib" ) );
 });
 
-gulp.task("copy-bootstrap", function () {
-	gulp.src("node_modules/bootstrap/*").pipe( gulp.dest( "src/vendor/bootstrap" ) );
-})
