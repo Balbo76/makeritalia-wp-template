@@ -147,19 +147,7 @@ gulp.task("jquery", function() {
 		.pipe( gulp.dest( "src/js/lib" ) );
 });
 
-gulp.task("bootstrap-js", function() {
-	return gulp.src("node_modules/bootstrap/dist/js/bootstrap.js")
-		.pipe( $.sourcemaps.init() )
-		.pipe( $.sourcemaps.write( "." ) )
-		.pipe( gulp.dest( "src/js/lib" ) );
-});
 
-gulp.task("bootstrap-css", function() {
-	return gulp.src("node_modules/bootstrap/dist/css/bootstrap.css")
-		.pipe( $.sourcemaps.init() )
-		.pipe( $.sourcemaps.write( "." ) )
-		.pipe( gulp.dest( "src/css/lib" ) );
-});
 
 gulp.task("normalize", function() {
 	return gulp.src("node_modules/normalize.css/normalize.css")
@@ -215,4 +203,20 @@ gulp.task( "default", ["watch"] );
 
 
 
+gulp.task("bootstrap-js", function() {
+	return gulp.src("src/vendor/bootstrap/dist/js/bootstrap.js")
+		.pipe( $.sourcemaps.init() )
+		.pipe( $.sourcemaps.write( "." ) )
+		.pipe( gulp.dest( "src/js/lib" ) );
+});
 
+gulp.task("bootstrap-css", function() {
+	return gulp.src("src/vendor/bootstrap/dist/css/bootstrap.css")
+		.pipe( $.sourcemaps.init() )
+		.pipe( $.sourcemaps.write( "." ) )
+		.pipe( gulp.dest( "src/css/lib" ) );
+});
+
+gulp.task("copy-bootstrap", function () {
+	gulp.src("node_modules/bootstrap/*").pipe( gulp.dest( "src/vendor/bootstrap" ) );
+})
