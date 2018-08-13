@@ -147,6 +147,8 @@ function html5blank_styles() {
         // Custom CSS
         wp_register_style( 'html5blank', get_template_directory_uri() . '/style.css', array( 'normalize' ), '1.0' );
 
+        wp_enqueue_style( "font-awesome", get_template_directory_uri() . '/css/lib/all.css' );
+
         wp_enqueue_style( "bootstrap-css", get_template_directory_uri() . '/css/lib/bootstrap.css' );
 
         // Register CSS
@@ -218,8 +220,8 @@ function remove_width_attribute( $html ) {
 if ( function_exists( 'register_sidebar' ) ) {
     // Define Sidebar Widget Area 1
     register_sidebar( array(
-        'name'          => esc_html( 'Widget Area 1', 'html5blank' ),
-        'description'   => esc_html( 'Description for this widget-area...', 'html5blank' ),
+        'name'          => esc_html( 'Sidebar Widget', 'html5blank' ),
+        'description'   => esc_html( 'Sidebar a sinistra', 'html5blank' ),
         'id'            => 'widget-area-1',
         'before_widget' => '<div id="%1$s" class="%2$s">',
         'after_widget'  => '</div>',
@@ -229,8 +231,8 @@ if ( function_exists( 'register_sidebar' ) ) {
 
     // Define Sidebar Widget Area 2
     register_sidebar( array(
-        'name'          => esc_html( 'Widget Area 2', 'html5blank' ),
-        'description'   => esc_html( 'Description for this widget-area...', 'html5blank' ),
+        'name'          => esc_html( 'Footer Widget', 'html5blank' ),
+        'description'   => esc_html( 'Widget del footer', 'html5blank' ),
         'id'            => 'widget-area-2',
         'before_widget' => '<div id="%1$s" class="%2$s">',
         'after_widget'  => '</div>',
@@ -286,7 +288,7 @@ function html5wp_excerpt( $length_callback = '', $more_callback = '' ) {
     $output = apply_filters( 'wptexturize', $output );
     $output = apply_filters( 'convert_chars', $output );
     $output = '<p>' . $output . '</p>';
-    echo esc_html( $output );
+    echo  $output ;
 }
 
 // Custom View Article link to Post

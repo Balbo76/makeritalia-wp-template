@@ -160,7 +160,7 @@ gulp.task( "envProduction", function() {
 });
 
 /** Livereload */
-gulp.task( "watch", [ "template", "styles", /* "jshint", */ "modernizr", "jquery", "bootstrap-js", "bootstrap-css", "normalize" ], function() {
+gulp.task( "watch", [ "template", "styles", /* "jshint", */ "modernizr", "jquery", "bootstrap-js", "bootstrap-css", "font-awesome", "normalize" ], function() {
 	var server = $.livereload;
 	server.listen();
 
@@ -182,6 +182,11 @@ gulp.task( "watch", [ "template", "styles", /* "jshint", */ "modernizr", "jquery
 
 	/** Watch for JSHint */
 	gulp.watch( "src/js/{!(lib)/*.js,*.js}", ["jshint"] );
+
+	gulp.watch( [
+		"src/bower_components/bootstrap/dist/css/*",
+		"src/bower_components/bootstrap/dist/js/*",
+	], [ "bootstrap-js", "bootstrap-css" ]  );
 });
 
 /** Build */
@@ -217,3 +222,19 @@ gulp.task("bootstrap-css", function() {
 		.pipe( gulp.dest( "src/css/lib" ) );
 });
 
+gulp.task("font-awesome", function() {
+	var
+		a = gulp.src("node_modules/@fortawesome/fontawesome-free/css/all.css")
+			.pipe( $.sourcemaps.init() )
+			.pipe( $.sourcemaps.write( "." ) )
+			.pipe( gulp.dest( "src/css/lib" ) ),
+
+		b = gulp.src("node_modules/@fortawesome/fontawesome-free/webfonts/*")
+			.pipe( $.sourcemaps.init() )
+			.pipe( $.sourcemaps.write( "." ) )
+			.pipe( gulp.dest( "src/css/webfonts" ) );
+
+
+
+	return a & b;
+});

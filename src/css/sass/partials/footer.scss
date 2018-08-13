@@ -4,4 +4,22 @@
  */
 
 
-.footer {}
+.footer {
+  background: linear-gradient(to top right, #005E9A, #45728F);
+  color: white;
+
+  div.container {
+    padding: 10px 10px;
+  }
+
+  .copyright {
+    text-align: center;
+    display: block;
+    border-top: 1px solid #45728F;
+    padding: 10px 0px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+  }
+}
+
+

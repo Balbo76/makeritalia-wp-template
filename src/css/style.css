@@ -3,7 +3,7 @@
  * ---
  * Main `sass` file. Import here `sass` files
  */
-@import url("https://fonts.googleapis.com/css?family=Indie+Flower");
+@import url("https://fonts.googleapis.com/css?family=Raleway");
 /**
  * modules/variables
  * ---
@@ -110,6 +110,10 @@
  * partials/header
  * ---
  */
+.logo {
+  width: 50%;
+  padding: 5px 10px; }
+
 /**
  * partials/nav
  * ---
@@ -123,6 +127,19 @@
  * partials/footer
  * ---
  */
+.footer {
+  background: linear-gradient(to top right, #005E9A, #45728F);
+  color: white; }
+  .footer div.container {
+    padding: 10px 10px; }
+  .footer .copyright {
+    text-align: center;
+    display: block;
+    border-top: 1px solid #45728F;
+    padding: 10px 0px;
+    margin-top: 10px;
+    margin-bottom: 0px; }
+
 /**
  * partials/print
  * ---
@@ -174,16 +191,29 @@
     page-break-after: avoid; } }
 
 #mainNav {
-  background: linear-gradient(to right, rgba(255, 0, 0, 0), red);
-  margin-bottom: 15px; }
+  background: linear-gradient(to top right, #45728F, #005E9A);
+  margin-bottom: 10px;
+  padding: 0 5px; }
+  #mainNav a {
+    color: white;
+    font-weight: bold;
+    padding: 15px 15px; }
+  #mainNav a:hover {
+    background-color: black; }
+
+.post-thumb {
+  width: 100%;
+  max-height: 250px;
+  overflow: hidden; }
 
 html,
 body {
   overflow-x: hidden;
-  /* Prevent scroll on narrow devices */ }
+  /* Prevent scroll on narrow devices */
+  font-family: Raleway !important; }
 
-body {
-  padding-top: 56px; }
+body.home h2 {
+  font-size: 1.2rem; }
 
 @media (max-width: 991.98px) {
   .offcanvas-collapse {
@@ -193,6 +223,7 @@ body {
     bottom: 0;
     left: 100%;
     width: 100%;
+    margin-left: 10%;
     padding-right: 1rem;
     padding-left: 1rem;
     overflow-y: auto;
@@ -207,7 +238,7 @@ body {
 
 .nav-scroller {
   position: relative;
-  z-index: 2;
+  z-index: 102;
   height: 2.75rem;
   overflow-y: hidden; }
 
@@ -251,5 +282,13 @@ body {
 
 .lh-150 {
   line-height: 1.5; }
+
+#back-to-top {
+  position: fixed;
+  z-index: 10;
+  bottom: 10px;
+  right: 50px;
+  color: black;
+  display: none; }
 
 /*# sourceMappingURL=style.css.map */

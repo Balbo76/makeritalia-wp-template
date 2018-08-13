@@ -1,45 +1,56 @@
 <?php get_header(); ?>
 
-	<main role="main" aria-label="Content">
-		<!-- section -->
-		<section>
 
-			<h1><?php the_title(); ?></h1>
 
-		<?php if ( have_posts()) : while ( have_posts() ) : the_post(); ?>
+    <div class="row">
+        <div class="col-lg-8">
 
-			<!-- article -->
-			<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+            <main role="main" aria-label="Content">
+                <!-- section -->
+                <section>
 
-				<?php the_content(); ?>
+                    <h1><?php the_title(); ?></h1>
 
-				<?php comments_template( '', true ); // Remove if you don't want comments. ?>
+                <?php if ( have_posts()) : while ( have_posts() ) : the_post(); ?>
 
-				<br class="clear">
+                    <!-- article -->
+                    <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-				<?php edit_post_link(); ?>
+                        <?php the_content(); ?>
 
-			</article>
-			<!-- /article -->
+                        <?php comments_template( '', true ); // Remove if you don't want comments. ?>
 
-		<?php endwhile; ?>
+                        <br class="clear">
 
-		<?php else : ?>
+                        <?php edit_post_link(); ?>
 
-			<!-- article -->
-			<article>
+                    </article>
+                    <!-- /article -->
 
-				<h2><?php esc_html_e( 'Sorry, nothing to display.', 'html5blank' ); ?></h2>
+                <?php endwhile; ?>
 
-			</article>
-			<!-- /article -->
+                <?php else : ?>
 
-		<?php endif; ?>
+                    <!-- article -->
+                    <article>
 
-		</section>
-		<!-- /section -->
-	</main>
+                        <h2><?php esc_html_e( 'Sorry, nothing to display.', 'html5blank' ); ?></h2>
 
-<?php get_sidebar(); ?>
+                    </article>
+                    <!-- /article -->
+
+                <?php endif; ?>
+
+                </section>
+                <!-- /section -->
+            </main>
+
+        </div>
+        <div class="col-md-4">
+
+            <?php get_sidebar(); ?>
+
+        </div>
+    </div>
 
 <?php get_footer(); ?>

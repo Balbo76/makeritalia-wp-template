@@ -4,7 +4,7 @@
  * Main `sass` file. Import here `sass` files
  */
 
-@import url("https://fonts.googleapis.com/css?family=Indie+Flower");
+@import url("https://fonts.googleapis.com/css?family=Raleway");
 
 // Modules
 @import "modules/variables";
@@ -24,17 +24,36 @@
 
 
 #mainNav {
-  background: linear-gradient(to right, rgba(255,0,0,0), rgba(255,0,0,1));
-  margin-bottom: 15px;
+  background: linear-gradient(to top right, #45728F, #005E9A);
+  margin-bottom: 10px;
+  padding: 0 5px;
+  a {
+    color: white;
+    font-weight: bold;
+    padding: 15px 15px;
+  }
+  a:hover {
+    background-color: black;
+  }
+}
+
+.post-thumb {
+  width: 100%;
+  max-height: 250px;
+  overflow: hidden;
 }
 
 html,
 body {
   overflow-x: hidden; /* Prevent scroll on narrow devices */
+  font-family: Raleway!important;
 }
 
 body {
-  padding-top: 56px;
+  //padding-top: 56px;
+}
+body.home h2 {
+  font-size: 1.2rem;
 }
 
 @media (max-width: 991.98px) {
@@ -44,6 +63,7 @@ body {
     bottom: 0;
     left: 100%;
     width: 100%;
+    margin-left: 10%;
     padding-right: 1rem;
     padding-left: 1rem;
     overflow-y: auto;
@@ -61,7 +81,7 @@ body {
 
 .nav-scroller {
   position: relative;
-  z-index: 2;
+  z-index: 102;
   height: 2.75rem;
   overflow-y: hidden;
 }
@@ -103,3 +123,12 @@ body {
 .lh-100 { line-height: 1; }
 .lh-125 { line-height: 1.25; }
 .lh-150 { line-height: 1.5; }
+
+#back-to-top {
+  position: fixed;
+  z-index: 10;
+  bottom: 10px;
+  right: 50px;
+  color: black;
+  display: none;
+}

@@ -26,24 +26,30 @@
 	</head>
 	<body <?php body_class("bg-light"); ?>>
 
-    <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
-        <a class="navbar-brand mr-auto mr-lg-0" href="<?php echo esc_url( home_url() ); ?>">makerItalia.org</a>
-        <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
-            <span class="navbar-toggler-icon"></span>
-        </button>
 
-        <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+        <div class="container">
+            <div class="row d-none d-lg-block">
+                <div class="col-md-12">
+                    <a class="navbar-brand mr-auto mr-lg-0" href="<?php echo esc_url( home_url() ); ?>">
+                        <img src="<?php echo esc_url( get_template_directory_uri() ) . '/img/logo.png';  ?>" class="logo">
+                    </a>
+                </div>
+            </div>
+        </div>
 
+
+    <nav id="mainNav" class="navbar navbar-expand-lg shadow-sm">
+        <div class="container">
+
+            <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
 <?php
+
 $theme_location = "header-menu";
-//$menu_items = wp_get_nav_menu_items("header-menu");
 if ( ($theme_location) && ($locations = get_nav_menu_locations()) && isset($locations[$theme_location]) ) {
     $menu = get_term($locations[$theme_location], 'nav_menu');
     $menu_items = wp_get_nav_menu_items($menu->term_id);
-
     $menu_list = "";
     $menu_list .= '<ul class="navbar-nav mr-auto">' . "\n";
-
 
     foreach ($menu_items as $menu_item) {
         if ($menu_item->menu_item_parent == 0) {
@@ -54,7 +60,7 @@ if ( ($theme_location) && ($locations = get_nav_menu_locations()) && isset($loca
             foreach ($menu_items as $submenu) {
                 if ($submenu->menu_item_parent == $parent) {
                     $bool = true;
-                    $menu_array[] = '<li class="nav-item"><a class="nav-link" href="' . $submenu->url . '">' . $submenu->title . '</a></li>' . "\n";
+                    $menu_array[] = '<a class="dropdown-item" href="' . $submenu->url . '">' . $submenu->title . '</a>' . "\n";
                 }
             }
             if ($bool == true && count($menu_array) > 0) {
@@ -68,8 +74,8 @@ if ( ($theme_location) && ($locations = get_nav_menu_locations()) && isset($loca
 
             } else {
 
-                $menu_list .= '<li>' . "\n";
-                $menu_list .= '<a href="' . $menu_item->url . '">' . $menu_item->title . '</a>' . "\n";
+                $menu_list .= '<li class="nav-item">' . "\n";
+                $menu_list .= '<a class="nav-link" href="' . $menu_item->url . '">' . $menu_item->title . '</a>' . "\n";
             }
 
         }
@@ -82,17 +88,13 @@ if ( ($theme_location) && ($locations = get_nav_menu_locations()) && isset($loca
     echo $menu_list;
 }
 ?>
+            </div>
 
-
-
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
-
+            <button class="navbar-toggler p-0 border-0 text-right" type="button" data-toggle="offcanvas">
+                <span class="navbar-toggler-icon border-white"></span>
+            </button>
 
         </div>
     </nav>
 
-
-
+    <div class="container">
