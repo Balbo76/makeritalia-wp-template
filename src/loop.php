@@ -1,17 +1,17 @@
 <div class="card-columns">
 <?php if (have_posts()): while (have_posts()) : the_post(); ?>
 
-    <div class="card">
+    <div class="card shadow-sm">
 	<!-- article -->
 	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
         <div class="card-header">
             <small class="date">
                 <time datetime="<?php the_time( 'Y-m-d' ); ?> <?php the_time( 'd-m-Y H:i' ); ?>">
-                    <?php the_date(); ?> <?php the_time(); ?>
+                    <i class="fas fa-calendar-alt"></i>&nbsp;<?php the_date(); ?> <?php the_time(); ?>
                 </time>
             </small>
-            <h2>
+            <h2 class="title">
                 <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a>
             </h2>
 
@@ -25,7 +25,7 @@
                 </a>
             <?php endif; ?>
 
-            <?php html5wp_excerpt( 'html5wp_index' ); // Build your custom callback length in functions.php. ?>
+            <?php the_excerpt(); // html5wp_excerpt( 'html5wp_index' ); // Build your custom callback length in functions.php. ?>
 
 
 

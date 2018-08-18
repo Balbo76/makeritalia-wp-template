@@ -1,4 +1,7 @@
-<?php get_header(); ?>
+<?php
+get_header();
+?>
+<div class="container shadow-sm bg-white content">
 
 	<main role="main" aria-label="Content">
 		<!-- section -->

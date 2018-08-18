@@ -15,11 +15,16 @@
                 ) );
 
                 foreach ($links as $link){
-                    echo '<li class="page-item">'.str_replace("page-numbers","page-link",$link).'</li>';
+                    $str = str_replace("page-numbers","page-link",$link);
+                    $str = str_replace("current","active", $str);
+                    $str = str_replace("span","a", $str);
+                    echo '<li class="page-item">'.$str.'</li>';
                 }
              ?>
 
         </ul>
     </nav>
-
+<?php
+//print_r($links);
+?>
 <!-- /pagination -->

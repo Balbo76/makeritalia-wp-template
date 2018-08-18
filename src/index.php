@@ -1,7 +1,9 @@
 <?php get_header(); ?>
 
+    <div class="container shadow-sm bg-white content">
+
         <div class="row">
-            <div class="col-lg-9">
+            <div class="col-lg-10">
 
                 <main role="main" aria-label="Content">
                     <!-- section -->
@@ -18,7 +20,7 @@
                 </main>
 
             </div>
-            <div class="col-lg-3">
+            <div class="col-lg-2">
 
                 <?php get_sidebar(); ?>
 

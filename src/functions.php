@@ -21,7 +21,7 @@ if ( ! isset( $content_width ) ) {
     $content_width = 900;
 }
 
-if ( function_exists( 'add_theme_support' ) ) {
+if ( function_exists( 'add_theme_support' ) ) {à
 
     // Add Thumbnail Theme Support.
     add_theme_support( 'post-thumbnails' );
@@ -149,7 +149,7 @@ function html5blank_styles() {
 
         wp_enqueue_style( "font-awesome", get_template_directory_uri() . '/css/lib/all.css' );
 
-        wp_enqueue_style( "bootstrap-css", get_template_directory_uri() . '/css/lib/bootstrap.css' );
+        // wp_enqueue_style( "bootstrap-css", get_template_directory_uri() . '/css/lib/bootstrap.css' );
 
         // Register CSS
         wp_enqueue_style( 'html5blank' );
@@ -159,7 +159,7 @@ function html5blank_styles() {
         // Custom CSS
         wp_register_style( 'html5blankcssmin', get_template_directory_uri() . '/style.css', array(), '1.0' );
 
-        wp_enqueue_style( "bootstrap-css", get_template_directory_uri() . '/css/lib/bootstrap.css' );
+        // wp_enqueue_style( "bootstrap-css", get_template_directory_uri() . '/css/lib/bootstrap.css' );
 
         // Register CSS
         wp_enqueue_style( 'html5blankcssmin' );
@@ -407,15 +407,15 @@ add_filter( 'wp_nav_menu_args', 'my_wp_nav_menu_args' ); // Remove surrounding <
 add_filter( 'the_category', 'remove_category_rel_from_category_list' ); // Remove invalid rel attribute
 add_filter( 'the_excerpt', 'shortcode_unautop' ); // Remove auto <p> tags in Excerpt (Manual Excerpts only)
 add_filter( 'the_excerpt', 'do_shortcode' ); // Allows Shortcodes to be executed in Excerpt (Manual Excerpts only)
-add_filter( 'excerpt_more', 'html5_blank_view_article' ); // Add 'View Article' button instead of [...] for Excerpts
+//add_filter( 'excerpt_more', 'html5_blank_view_article' ); // Add 'View Article' button instead of [...] for Excerpts
 add_filter( 'show_admin_bar', 'remove_admin_bar' ); // Remove Admin bar
 add_filter( 'style_loader_tag', 'html5_style_remove' ); // Remove 'text/css' from enqueued stylesheet
-add_filter( 'post_thumbnail_html', 'remove_thumbnail_dimensions', 10 ); // Remove width and height dynamic attributes to thumbnails
-add_filter( 'post_thumbnail_html', 'remove_width_attribute', 10 ); // Remove width and height dynamic attributes to post images
+//add_filter( 'post_thumbnail_html', 'remove_thumbnail_dimensions', 10 ); // Remove width and height dynamic attributes to thumbnails
+//add_filter( 'post_thumbnail_html', 'remove_width_attribute', 10 ); // Remove width and height dynamic attributes to post images
 add_filter( 'image_send_to_editor', 'remove_width_attribute', 10 ); // Remove width and height dynamic attributes to post images
 
 // Remove Filters
-remove_filter( 'the_excerpt', 'wpautop' ); // Remove <p> tags from Excerpt altogether
+//remove_filter( 'the_excerpt', 'wpautop' ); // Remove <p> tags from Excerpt altogether
 
 // Shortcodes
 add_shortcode( 'html5_shortcode_demo', 'html5_shortcode_demo' ); // You can place [html5_shortcode_demo] in Pages, Posts now.
@@ -555,3 +555,11 @@ function create_bootstrap_menu( $theme_location ) {
 
     echo $menu_list;
 }
+
+
+// REMOVE WP EMOJI
+remove_action('wp_head', 'print_emoji_detection_script', 7);
+remove_action('wp_print_styles', 'print_emoji_styles');
+
+remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
+remove_action( 'admin_print_styles', 'print_emoji_styles' );

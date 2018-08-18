@@ -1,15 +1,24 @@
-<?php get_header(); ?>
-
-
+<?php
+get_header();
+?>
+<div class="container shadow-sm bg-white content">
 
     <div class="row">
-        <div class="col-lg-8">
+        <div class="col-md-12">
+            <h1 class="title">
+                <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a>
+            </h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-10">
 
             <main role="main" aria-label="Content">
                 <!-- section -->
                 <section>
 
-                    <h1><?php the_title(); ?></h1>
+
 
                 <?php if ( have_posts()) : while ( have_posts() ) : the_post(); ?>
 
@@ -46,7 +55,7 @@
             </main>
 
         </div>
-        <div class="col-md-4">
+        <div class="col-md-2">
 
             <?php get_sidebar(); ?>
 

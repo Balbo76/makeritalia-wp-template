@@ -1,15 +1,17 @@
-<?php get_header(); ?>
-
+<?php
+get_header();
+?>
+<div class="container shadow-sm bg-white content">
 
 
     <div class="row">
-        <div class="col-lg-9">
+        <div class="col-lg-10">
 
             <main role="main" aria-label="Content">
                 <!-- section -->
                 <section>
 
-                    <h1><?php esc_html_e( 'Category: ', 'html5blank' ); single_cat_title(); ?></h1>
+                    <h1><?php single_cat_title(); ?></h1>
 
                     <?php get_template_part( 'loop' ); ?>
 
@@ -20,7 +22,7 @@
             </main>
 
         </div>
-        <div class="col-lg-3">
+        <div class="col-lg-2">
 
             <?php get_sidebar(); ?>
 

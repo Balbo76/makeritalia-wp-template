@@ -5,8 +5,13 @@
 
 
 .footer {
-  background: linear-gradient(to top right, #005E9A, #45728F);
+  background: linear-gradient(to top right, $primary, #45728F);
   color: white;
+
+  a {
+    color: white;
+    font-weight: bold;
+  }
 
   div.container {
     padding: 10px 10px;

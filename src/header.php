@@ -26,22 +26,22 @@
 	</head>
 	<body <?php body_class("bg-light"); ?>>
 
-
-        <div class="container">
-            <div class="row d-none d-lg-block">
-                <div class="col-md-12">
-                    <a class="navbar-brand mr-auto mr-lg-0" href="<?php echo esc_url( home_url() ); ?>">
-                        <img src="<?php echo esc_url( get_template_directory_uri() ) . '/img/logo.png';  ?>" class="logo">
-                    </a>
-                </div>
-            </div>
+        <div class="container d-none d-lg-block header bg-white shadow-sm">
+            <a class="navbar-brand logo" href="<?php echo esc_url( home_url() ); ?>">
+                <img src="<?php echo esc_url( get_template_directory_uri() ) . '/img/logo.png';  ?>" > <span>makerItalia.org</span>
+            </a>
         </div>
 
+        <nav id="mainNav" class="navbar navbar-expand-lg navbar-dark shadow-lg">
+            <div class="container">
 
-    <nav id="mainNav" class="navbar navbar-expand-lg shadow-sm">
-        <div class="container">
+                <button class="navbar-toggler" type="button" data-toggle="offcanvas" data-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-            <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+                <div class="navbar-collapse offcanvas-collapse" id="mainNavbar">
+
+                    <img src="<?php echo esc_url( get_template_directory_uri() ) . '/img/logo.png';  ?>" class="logo navbar-toggler">
 <?php
 
 $theme_location = "header-menu";
@@ -90,11 +90,5 @@ if ( ($theme_location) && ($locations = get_nav_menu_locations()) && isset($loca
 ?>
             </div>
 
-            <button class="navbar-toggler p-0 border-0 text-right" type="button" data-toggle="offcanvas">
-                <span class="navbar-toggler-icon border-white"></span>
-            </button>
-
         </div>
     </nav>
-
-    <div class="container">

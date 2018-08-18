@@ -1,0 +1,18 @@
+
+#back-to-top {
+  position: fixed;
+  z-index: 10;
+  bottom: 0px;
+  right: 10px;
+  color: $primary;
+  display: none;
+}
+
+
+@include media-breakpoint-up(lg) {
+  #back-to-top {
+    right: 50px;
+    bottom: 10px;
+  }
+}
+
